@@ -1,6 +1,6 @@
 {
   "name": "onvo-tv",
-  "version": "1.1.9",
+  "version": "1.2.0",
   "description": "ONVO TV application",
   "author": "ONVO Platforms, LLC",
   "copyright": "© 2024 ONVO Platforms, LLC. All rights reserved.",
@@ -8,5 +8,6 @@
   "scripts": {
     "start": "node main.js"
   },
+  "message": "Testing remote update",
   "license": "CC-BY-NC-ND-4.0"
 }
