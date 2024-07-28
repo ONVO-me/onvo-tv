@@ -1,0 +1,29 @@
+<div class="menu fixed">
+    <div class="menu-container main-menu-cont">
+        <div class="logo" onclick="goHome(this)"></div>
+        <div class="categories"><span>Privacy</span><span
+                onclick="document.querySelector('.terms-page').classList.remove('hidden')">Terms</span>
+            <a href="https://onvo.me/plus" target="_blank">ONVO Plus</a>
+            <a onclick="goHome(this)" href="#" target="_blank">Home</a>
+        </div>
+        <div class="back-arrow"></div>
+        <div class="login-search-container">
+            <div class="search-home" onfocus="showBrowse()">
+                <input type="text" class="search-input" oninput="searchInput(this)" placeholder="Search movie or series">
+            </div>
+            <div class="close-bcor hidden" onclick="closeSearch()"></div>
+            <div class="search-result-container hidden">
+                <div class="inset-search-mini">
+                </div>
+            </div>
+            <div class="login-btn" onclick="login(this)"></div>
+            <div class="menu-icon" onclick="showMenu()"></div>
+            <div class="login-data"></div>
+        </div>
+    </div>
+    <div class="back-soaries-container">
+        <div class="menu-container">
+            <div class="back-soaries"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="subtitles-page hidden">
+  <div class="review-page">
+    <div class="inset-review-page">
+      <div class="add-rating"><span>I watched </span>
+        <div class="rater-image"></div>
+      </div>
+      <div class="movie-rate-poster"></div>
+      <div class="movie-session-rate">
+        <div class="flex-rating-stars"><span data-value="1"></span><span data-value="2"></span><span
+            data-value="3"></span><span data-value="4"></span><span data-value="5"></span></div>
+        <div class="movie-rate-body"><textarea placeholder="Typer your review" class="movie-review-textare"></textarea>
+        </div>
+        <div class="post-review" onclick="postReview()"></div>
+        <div class="box-condrate">
+          <div class="checkbox"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="subtitles-back" onclick="closeSubtitles()"></div>
+  <div class="subtitles-container">
+    <div class="blured-subtitles"><span class="v1-blur"></span><span class="v2-blur"></span><span
+        class="v3-blur"></span><span class="v4-blur"></span></div>
+    <div class="subtitles-content">
+      <div class="subtitles-header"><span>Subtitles</span></div><a class="subtitles-count">0</a>
+      <div class="close-subs close" onclick="closeSubtitles();"></div>
+    </div>
+    <div class="subtitles-content-container">
+      <input type="file" class="hidden" id="subtitles-chose" onchange="showSrtFile(this)" />
+      <div class="my-own-subtitles" onclick="showSrtUploader();">
+        <div class="chose-subtitles-own"><span></span></div>
+      </div>
+      <div class="inset-subtitles-content">
+      </div>
+    </div>
+  </div>
+</div>

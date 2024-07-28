@@ -1,0 +1,21 @@
+{
+  "name": "fast-blob-stream",
+  "version": "1.1.1",
+  "description": "Fast Blob -> Node Stream",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blob",
+    "readable",
+    "writable",
+    "stream"
+  ],
+  "author": "ThaUnknown_",
+  "license": "MIT",
+  "dependencies": {
+    "fast-readable-async-iterator": "^1.1.1",
+    "streamx": "^2.12.4"
+  }
+}

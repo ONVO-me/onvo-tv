@@ -1,0 +1,325 @@
+<% 
+function formatNumber(number) { if (number < 1000) { 
+    return number?.toString(); 
+} else if (number < 1000000) {
+     return (number / 1000).toFixed(1) + 'K' ; 
+    } else if (number < 1000000000) { 
+        return (number / 1000000).toFixed(1) + 'M' ;
+}else{ 
+    return (number / 1000000000).toFixed(1) + 'B' ; 
+} 
+} %>
+    <html>
+
+    <head>
+        <%- include('../global/globalHeader') %>
+            <link rel="stylesheet" href="/private_css/party/partyInStyle.css?edwafdsfrw">
+    </head>
+
+    <body class="player">
+        <%- include('../global/menuParty') %>
+            <div class="movie-v2-background">
+                <div class="inner-v2-back" path="<%- data?.background %>"
+                    style="background-image: url(https://image.tmdb.org/t/p/original/<%- data?.background %>)"></div>
+            </div>
+            <div class="invite-container hidden">
+                <div class="subtitles-back"
+                    onclick="document.querySelector('.invite-container').classList.add('hidden')">
+                </div>
+                <div class="invite-users-input">
+                    <div class="invite-users-header"></div>
+                    <div class="invite-users-field"><input type="text" placeholder="Search for user or friend"></div>
+                    <div class="users-invite-append">
+                        <div class="lds-roller-main">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="view-sources hidden">
+                <div class="subtitles-back darken"
+                    onclick="document.querySelector('.view-sources').classList.add('hidden')">
+                </div>
+                <div class="watch-providers">
+                    <div class="top-title-providers"></div>
+                    <div class="flex-providers single">
+                    </div>
+                    <div class="lds-roller-main">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <%- include('../global/errors') %>
+                <%- include('../global/share') %>
+                    <div class="party-body">
+                        <div class="main-party-container" owner="<%- data.owner %>" dataid="<%- data.id %>"
+                            data-type="<%- data.type %>" data-imdb="<%- data.links?.imdb_id %>"
+                            runtime="<%- data.runtime %>">
+                            <div class="video-stream-container upload-file owner link-party">
+                                <div class="vivo-effect"></div>
+                                <div class="party-slot-cont">
+                                    <div class="file-link-source"></div>
+                                    <div class="logo-party-container">
+                                        <div class="logo-party">
+                                            <span class="slogo-loader" path="<%- data.logos ? data.logos[0]?.image : '' %>"
+                                                style="background-image: url(https://image.tmdb.org/t/p/w500/<%- data.logos ? data.logos[0]?.image : '' %>);"></span>
+                                            <span
+                                                style="background-image: url(https://image.tmdb.org/t/p/w500/<%- data.logos ? data.logos[0]?.image : ''  %>);"></span>
+                                        </div>
+                                        <div class="downloading-status-party">
+                                            <div class="flex-download-status">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="file-link-source">
+                                        <div class="file-source-input">
+                                            <div class="actual-source-input"><input oninput="torrentSourceInput(this)"
+                                                    onpaste="torrentSourceInput(this)" id="trsource" type="text"
+                                                    placeholder="Insert movie source link"
+                                                    value="<%- req.query?.source_link %>">
+                                            </div>
+                                            <div class="show-sources">
+                                                <div class="view-avilable-sources"></div>
+                                                <a href="/docs/watching" target="_blank">
+                                                    <p>How to watch?</p>
+                                                </a>
+                                            </div>
+                                            <!--<span class="ormetod">OR</span>
+              <div class="source-button-input"><a></a></div>-->
+                                        </div>
+                                    </div>
+                                    <div class="file-chose-source">
+                                        <div class="inset-source-descript">
+                                            <div class="party-source-opt syncing">
+                                                <span>Syncing</span>
+                                                <p>Chose this if you and your friends have a copy of the movie on your
+                                                    devices, for real-time
+                                                    &amp;
+                                                    fast playback syncing</p>
+                                                <div class="select-party-button" action="sync"></div>
+                                            </div>
+                                            <div class="party-source-opt fromsource">
+                                                <span>Online watching</span>
+                                                <p>Chose this if you have movie or video source as torrent or youtube
+                                                    link
+                                                    to watch movie online
+                                                    with friends</p>
+                                                <div class="select-party-button" action="link"></div>
+                                            </div>
+                                            <div class="party-source-opt streaming">
+                                                <span>Streaming</span>
+                                                <p>Chose this if you have copy of the movie in your device and you want
+                                                    to
+                                                    stream it with your
+                                                    friends</p>
+                                                <div class="select-party-button" action="stream"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="video-logostrigt" onclick="triggerInput()"></div>
+                                </div>
+                                <input type="file" id="videoFileInput" class="hidden" />
+                                <div class="video-emulator">
+                                    <div class="video-text-status">
+                                        <div></div><span></span>
+                                    </div>
+                                    <div class="video-controler">
+                                        <div class="controler-feedback-animation">
+                                            <div class="right-back-animation"><span></span></div>
+                                            <div class="back-back-animation"><span></span></div>
+                                        </div>
+                                        <div class="back-play-icon"></div>
+                                        <div class="back-toggle-play"></div>
+                                        <div class="subtitles-parse"><span class="text-subtitles-parse"></span></div>
+                                        <div class="video-control-bar">
+                                            <div class="inner-video-control">
+                                                <div class="video-left-icons">
+                                                    <div class="play-pause-video"></div>
+                                                    <div class="forwared-tenbtn" onclick="GoTenSecound()"></div>
+                                                    <div class="backwrd-tenbtn" onclick="BackTenSecound()"></div>
+                                                </div>
+                                                <div id="tooltip" class="tooltip"></div>
+                                                <input type="range" value="0" class="video-status-bar"
+                                                    id="videoStatusBar" min="0" max="10000" step="1">
+                                                <div class="video-right-icons">
+                                                    <div class="video-playpack"><span
+                                                            class="video-playpack-text">0:00:00</span></div>
+                                                    <div class="video-icon video-volume">
+                                                        <div class="max-volume"></div>
+                                                        <div class="volume-controler">
+                                                            <input type="range" value="0" class="video-status-bar"
+                                                                id="audioRanger" min="0" max="1" step="0.05">
+                                                        </div>
+                                                    </div>
+                                                    <div class="video-icon video-settings">
+                                                        <div class="settings-controler">
+                                                            <div class="controler-srt">
+                                                                <div class="size-font cnt-comp"><input type="range"
+                                                                        value="0" class="video-status-bar"
+                                                                        id="fontSizeSrt" min="15" max="100" step="1">
+                                                                    <span>24px</span>
+                                                                </div>
+                                                                <div class="pose-font cnt-comp">
+                                                                    <div class="arrow-move-srt up"></div>
+                                                                    <div class="arrow-move-srt down"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="section-sets size"><span>Subtitles size</span>
+                                                            </div>
+                                                            <div class="section-sets offset"><span>Subtitles
+                                                                    offset</span></div>
+                                                            <div class="section-sets pose"><span>Subtitles pose</span>
+                                                            </div>
+                                                            <div class="section-sets remove"><span>Remove source</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="seticon"></div>
+                                                    </div>
+                                                    <div class="video-icon video-fullicon"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <video id="videoPlayer" poster="none" style="background:none" muted
+                                        playsinline></video>
+                                </div>
+                            </div>
+                            <div class="stream-status">
+                                <div class="download-upload hidden">
+                                    <span id="upload-speed">0.0 mp/s</span><span id="download-speed">0.0 mp/s</span>
+                                </div>
+                            </div>
+                            <div class="movie-detail-party">
+                                <div class="movie-body"
+                                    temp-onclick="window.location.assign('/<%- data.type %>/<%- data.id %>')">
+                                    <div class="poster-party" path="<%- data.poster %>"
+                                        style="background-image: url(https://image.tmdb.org/t/p/w342<%- data.poster %>);">
+                                    </div>
+                                    <div class="title-source-party movie-tagline"><span><%- data.title %></span><a><%-
+                                                data.tagline || 'No tagline avilable' %></a>
+                                        <div class="stars-v2"><text><%- (data.numbers?.rate * 10)?.toFixed(0) %>%
+                                            </text><text class="number-v2rt">(<%- formatNumber(data.numbers?.raters)
+                                                    %>)</text>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="buttons-party">
+                                    <div class="button-party translate"
+                                        onclick="showSubtitles(document.querySelector('.main-party-container').getAttribute('dataid'),document.querySelector('.main-party-container').getAttribute('data-type'),params.get('season'),params.get('episode'))">
+                                        <a></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="addon-party-container">
+                                <div class="party-terms-cond">
+                                    <p>By joining party, you are agreed of our <a>Terms</a> and <a>Conditions</a>,
+                                        please
+                                        read before join
+                                    </p>
+                                </div>
+                                <div class="party-info-contianer">
+                                    <div class="party-info-inset">
+                                        <div class="owner-party-info"><span
+                                                style="background-image: url(<%- data.user?.img %>);"></span><a><%-
+                                                    data.user?.name || 'ONVO user' %></a>
+                                            <p>@<%- data.user?.user || 'onvouser' %></p>
+                                        </div>
+                                        <div class="join-party-button" onclick="joinParty(this)"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="party-container download-container nodownload">
+                            <div class="download-chart">
+                                <div class="card initial">
+                                    <div class="percent">
+                                        <svg>
+                                            <circle cx="105" cy="105" r="100"></circle>
+                                            <circle cx="105" class="download-proggress" cy="105" r="100"
+                                                style="--percent: 0"></circle>
+                                        </svg>
+                                        <div class="number">
+                                            <h3>0</h3>
+                                        </div>
+                                    </div>
+                                    <div class="download-title"><span>Proccessing</span></div>
+                                </div>
+                                <div class="download-speed download"><a>0 Mb/s</a>
+                                    <div class="download-title"><span>Connection speed</span></div>
+                                </div>
+                                <div class="download-speed upload"><a>0 Mb/s</a>
+                                    <div class="download-title"><span>Upload speed</span></div>
+                                </div>
+                            </div>
+                            <div class="download-tips">
+                                <span>You don't need to wait untill the proccessing finish, just keep watching and seek any
+                                    where you want in video, don't worry it will not take aditional data usage </span>
+                                <span>
+                                    <div class="autosave">
+                                        <div class="box"></div>
+                                    </div>
+                                </span>
+                                <div class="download-path-veerca">
+                                    <div class="save-path"><text>/ONVO TV/</text><a></a></div>
+                                    <div class="space-and-downloaded"></div>
+                                </div>
+                            </div>
+                            <div class="details-player-container">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <%- include('../global/subtitles') %>
+                    <script type="application/javascript" src="/js/videoPlayer.js?Sadsasdssd"></script>
+                    <script src="/private_js/player/playerScript.js?werw"></script>
+
+                        <style>
+                            .my-own-subtitles {
+                                display: block;
+                            }
+
+                            .movie-detail-party {
+                                transform: none !important;
+                            }
+
+                            @media screen and (max-width: 600px) {
+                                .movie-detail-party {
+                                    margin-top: 30px;
+                                }
+                               
+                            }
+
+                            .fullscreen .download-tips {
+                                display: none;
+                            }
+
+                            .fullscreen .party-container {
+                                display: none;
+                            }
+
+
+                            @media screen and (max-width: 600px) {
+                                .download-chart {
+                                    margin-top: 210px;
+                                }
+                            }
+                        </style>
+                        <script type="application/javascript" src="/js/global.js?Sadsasdssd"></script>
+    </body>
+
+
+    </html>

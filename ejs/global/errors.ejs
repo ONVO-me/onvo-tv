@@ -1,0 +1,132 @@
+
+<div class="terms-page hidden">
+  <div class="close-error" onclick="document.querySelector('.terms-page').classList.add('hidden')"></div>
+  <div class="terms">
+    <div class="inner-terms">
+      <h1>Terms of Service</h1>
+
+      <h2>1. Acceptance of Terms</h2>
+      <p>By using ONVO TV, you agree to comply with and be bound by these terms of service. If you do not agree
+        to these terms, you are not authorized to use this application.</p>
+
+      <h2>2. Purpose of the Application</h2>
+      <p>ONVO TV is designed to be a media player and video downloader application. It allows users to play and
+        download media files. This application does not host, provide, or endorse any torrent files or links.</p>
+
+      <h2>3. User Responsibility</h2>
+      <p>You, the user, are solely responsible for ensuring that your use of ONVO TV complies with all
+        applicable laws and regulations. This includes, but is not limited to, the following responsibilities:</p>
+      <ul>
+        <li><strong>Legality of Content:</strong> You must ensure that any content you download, access, or play using
+          ONVO TV is legally obtained. Downloading or streaming copyrighted content without proper authorization
+          is illegal and strictly prohibited.</li>
+        <li><strong>Verification:</strong> You are responsible for verifying that any media you download or play using
+          ONVO TV is not copyrighted or that you have obtained the necessary permissions or licenses from the
+          copyright holder.</li>
+      </ul>
+
+      <h2>4. Disclaimer of Liability</h2>
+      <ul>
+        <li>ONVO TV and its developers do not endorse, condone, or support the use of the application for
+          downloading or accessing illegal content.</li>
+        <li>ONVO TV and its developers shall not be held liable for any legal issues, damages, or consequences
+          arising from the use of the application for illegal purposes.</li>
+        <li>You acknowledge that ONVO TV is provided "as is" and "as available," without warranties of any kind,
+          either express or implied, including but not limited to warranties of merchantability, fitness for a
+          particular purpose, and non-infringement.</li>
+      </ul>
+
+      <h2>5. Prohibited Use</h2>
+      <p>You agree not to use ONVO TV to:</p>
+      <ul>
+        <li>Download, stream, or access any content that is illegal, including copyrighted materials without
+          authorization.</li>
+        <li>Circumvent, disable, or otherwise interfere with security-related features of the application or features
+          that enforce limitations on use.</li>
+      </ul>
+
+      <h2>6. Content Policy</h2>
+      <ul>
+        <li>ONVO TV does not host any media content or torrent files and is not responsible for the content that
+          users access or download using the application.</li>
+        <li>Any media files downloaded or played using ONVO TV are the sole responsibility of the user.</li>
+      </ul>
+
+      <h2>7. Changes to Terms</h2>
+      <p>We reserve the right to modify these terms at any time. Any changes will be effective immediately upon posting
+        the updated terms within the application. Your continued use of the application after any changes signifies your
+        acceptance of the new terms.</p>
+
+      <h2>8. Contact Information</h2>
+      <p>If you have any questions about these terms, please contact us at [Your Contact Information].</p>
+
+      <h2>Disclaimer</h2>
+      <p><strong>ONVO TV is a tool for playing and downloading media files. We do not host, provide, or endorse
+          any illegal content or torrent files. Users are responsible for ensuring that their use of the application
+          complies with all applicable laws and that any content they download or access is legally obtained.</strong>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="mobile-menu hidden">
+  <div class="watch-list-back" onclick="closeMenuMobile(this)"></div>
+  <div class="mobile-menu-container">
+    <div class="magic-portal-create hidden">
+      <div class="magic-portal-background"></div>
+      <div class="magic-portal-body">
+        <div class="portal-description"><span>stream movies and videos between home devices. Enjoy seamless,
+            high-quality entertainment with just a tap. Connect and share with Magic Portal!</span></div>
+        <div class="pulse">
+          <svg height="253" width="253">
+            <circle class="still" cx="125" cy="125" r="110"></circle>
+            <circle cx="125" cy="125" r="122"></circle>
+            <circle cx="125" cy="125" r="122"></circle>
+            <circle cx="125" cy="125" r="122"></circle>
+            <circle cx="125" cy="125" r="122"></circle>
+          </svg>
+        </div>
+        <div class="portal-sections">
+          <div class="portal-element" data-angle="0"><span class="laptop"></span><a>You (the host)</a></div>
+          <div class="portal-element portal-tv" data-angle="72"><span class="smart-tv"></span><a>Your smart TV</a></div>
+          <div class="portal-element" data-angle="144"><span class="ios"></span><a>Your father mobile</a></div>
+          <div class="portal-element" data-angle="216"><span class="windows"></span><a>Your brother pc</a></div>
+          <div class="portal-element" data-angle="288"><span class="mac"></span><a>Any device in home!</a></div>
+        </div>
+      </div>
+      <div class="qr-code-section"></div>
+      <div class="is-offline"><span>Enable offline mode, incase you want create the magic portal without internet</span>
+        <div class="box"></div>
+      </div>
+      <div class="create-magic-portal" onclick="createPortal(this)"><a>Create magic portal</a></div>
+    </div>
+    <div class="mobile-menu-inset">
+      <div class="mobile-menu-element downloads-menu" onclick="closeMenuMobile();setTimeout(getDownloads,200)">
+        <span>Downloads</span>
+      </div>
+      <div class="mobile-menu-element bridge" onclick="setTimeout(openBrigeCast,200)"><span>Play on
+          other devices</span></div>
+      <div class="mobile-menu-element terms-menu" onclick="closeMenuMobile();setTimeout(openTerms,200)"><span>Terms and
+          privacy</span></div>
+      <div class="mobile-menu-element plus-menu" onclick="interface('open','https://onvo.me/plus')"><span>ONVO
+          Plus</span></div>
+      <div class="mobile-menu-element parties-menu"><span>Watch parties</span></div>
+      <div class="mobile-menu-element logout-menu" onclick="logout(this)"><span>Logout</span></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="check-and-error hidden">
+  <div class="close-error" onclick="if(closedError){closeError();}"></div>
+  <div class="body-error">
+    <div class="header-text"><span></span>
+      <p></p>
+    </div>
+    <div class="bages-container"></div>
+    <div class="buttons-error">
+      <button type="button" class="apply"></button>
+    </div>
+  </div>
+</div>

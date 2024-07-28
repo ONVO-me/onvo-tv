@@ -1,0 +1,484 @@
+<% function formatNumber(number) { if (number < 1000) {
+   return number?.toString(); } else if (number < 1000000) {
+  return(number / 1000).toFixed(1) + 'K' ;} else if (number < 1000000000) { return (number / 1000000).toFixed(1) + 'M' ;
+  }else{ return (number / 1000000000).toFixed(1) + 'B' ; } } function formatRuntime(minutes) { if(!minutes) return; var
+  hours=Math.floor(minutes / 60); var remainingMinutes=minutes % 60; var formattedRuntime='' ; if (hours> 0) {
+  formattedRuntime += hours + 'hr ';
+  }
+  if (remainingMinutes > 0) {
+  formattedRuntime += remainingMinutes + 'min';
+  }
+  return formattedRuntime;
+  }
+  function timeAgo(timestamp) {
+  const now = Math.floor(Date.now() / 1000);
+  const secondsPast = now - timestamp;
+
+  if (secondsPast < 60) { return `${secondsPast} seconds ago`; } if (secondsPast < 3600) { const
+    minutes=Math.floor(secondsPast / 60); return `${minutes} minutes ago`; } if (secondsPast <=86400) { const
+    hours=Math.floor(secondsPast / 3600); return `${hours} hours ago`; } if (secondsPast <=2592000) { const
+    days=Math.floor(secondsPast / 86400); return `${days} days ago`; } if (secondsPast <=31536000) { const
+    months=Math.floor(secondsPast / 2592000); return `${months} months ago`; } const years=Math.floor(secondsPast /
+    31536000); return `${years} years ago`; } if (req.query.fetch !=='true' ) { %>
+    <html>
+
+    <head>
+      <%- include('../global/globalHeader') %>
+        <title>Watch <%- (data.title) %> (<%- (data.release)?.split('-')[0] %>) • ONVO TV</title>
+        <script async type="application/javascript" src="/js/publicNav.js"></script>
+        <meta name="description" content="<%- (data.overview) %>">
+        <meta name="keywords" content="<%= data.keywords?.join(', ') %>">
+        <meta property="og:url" content="https://tv.onvo.me" />
+        <meta property="og:site_name" content="ONVO TV" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title"
+          content="Watch <%- (data.title) %> (<%- (data.release)?.split('-')[0] %>) • ONVO TV" />
+        <meta property="og:image" content="<%- 'https://image.tmdb.org/t/p/w780/'+(data.background) %>" />
+        <meta property="og:description" content="<%- (data.overview) %>" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@onvo_me">
+        <meta name="twitter:title" content="Watch <%- (data.title) %> (<%- (data.release)?.split('-')[0] %>) • ONVO TV">
+        <meta name="twitter:description" content="<%- (data.overview) %>">
+        <meta name="twitter:image" content="<%- 'https://image.tmdb.org/t/p/w780/'+(data.background) %>">
+
+        <link rel="stylesheet" href="/private_css/singleMovie/singleMovieStyle.css?dsfddfs">
+    </head>
+
+    <body class="movie-parent" loaded="true">
+      <%- include('../global/errors') %>
+        <% }else { %>
+          <% } %>
+          <%- include('../global/share') %>
+            <div class="menu mvs">
+              <div class="logo" onclick="goHome(this);"></div>
+              <div class="login-search-container">
+                <div class="back-loginmv"></div>
+                <div class="search-home" onfocus="showBrowse()">
+                  <input type="text" class="search-input" oninput="searchInput(this)" placeholder="Search movie or series">
+                </div>
+                <div class="search-result-container hidden">
+                  <div class="inset-search-mini">
+                  </div>
+                </div>
+               
+                <div class="login-data">
+                  <div class="user-information">
+                    <div class="loginicon" onclick="login(this)"></div>
+                  </div>
+                  <div class="menu-logs-sets hidden">
+                    <div class="inset-menu-logs">
+                      <div class="section-sets settings">
+                        <span>Account settings</span>
+                      </div>
+                      <div class="section-sets profile">
+                        <span>Your profile</span>
+                      </div>
+                      <div class="section-sets logout" onclick="logout(this)">
+                        <span>Log out</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="back-arrow"></div>
+            </div>
+            <div class="watch-option-container hidden">
+              <div class="vivo-effect" onclick="document.querySelector('.watch-option-container').classList.add('hidden');              "></div>
+              <div class="party-slot-cont slecting">
+                <div class="file-chose-source">
+                  <div class="inset-source-descript">
+                    <div class="party-source-opt syncing">
+                      <span>Watch alone</span>
+                      <p>Choose this if you want to watch alone localy without your frinds </p>
+                      <div class="select-party-button" action="single"></div>
+                    </div>
+                    <div class="party-source-opt fromsource">
+                      <span>Watch with friends</span>
+                      <p>This option will make you able to invite your frinds to watch with you at same time with live
+                        chat</p>
+                      <div class="select-party-button" action="party"></div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="video-logostrigt" onclick="triggerInput()"></div>
+              </div>
+            </div>
+            <%- include('../global/subtitles') %>
+              <div class="movie-v2" dataid="<%- (data.id) %>" data-imdb="<%- data.links?.imdb_id %>"
+                data-type="<%- (data.type) %>">
+                <div class="back-v2" onclick="goHome(this)"></div>
+                <div class="movie-v2-container">
+                  <div class="movie-v2-background backs-sandbox">
+                    <div class="container-loading">
+                      <div class="blured-backdrop"></div>
+                      <img class="loading-background" src="https://image.tmdb.org/t/p/w185<%- (data.background) %>" />
+                    </div>
+                    <img class="inner-v2-back" onload="loadBack(this);" path="<%- (data.background) %>"
+                      src="https://image.tmdb.org/t/p/original<%- (data.background) %>" />
+                    <div class="shadowed-background"></div>
+                  </div>
+                  <div class="movie-v2-content">
+                    <div class="v2-details">
+                      <div class="inner-details-v2top">
+                        <div class="logo-v2-container">
+                          <img class="v2-logo" onerror="replacewithname(this)" path="<%- (data.logos ? data.logos[0]?.image : '') %>"
+                            src="https://image.tmdb.org/t/p/w500/<%- (data.logos ? data.logos[0]?.image : '') %>">
+                        </div>
+                        <div class="movies-types-v2"><span class="movie-release-year"><%- (data.release)?.split('-')[0] %></span><span
+                            class="genre-v2-badge">PG-13</span><span class="after-genre"><%- (data.lang) %></span>
+                          <span class="span-lest">
+                            <%= (data.type=='series' ? data.numbers?.episodes?.toString() + ' Episodes' :
+                              (formatRuntime(data.runtime) || 'No runtime' )) %>
+                          </span>
+                        </div>
+                        <p class="overview"><%- (data.overview) %></p>
+                      </div>
+                      <div class="genres-v2">
+                        <% data.genres?.forEach(genre=> { %>
+                          <span>
+                            <%= genre %>
+                          </span>
+                          <% }); %>
+                      </div>
+                    </div>
+                    <div class="container-provider">
+                      <div class="selects-hidden"></div>
+                      <div class="select-options hidden seasons">
+                        <% data.seasons?.forEach(season=> { if(season?.episode_count > 0 && season.poster){ %>
+                          <div class="select-option" onclick="selectThis(this)" number="<%- season.number %>"
+                            count="<%- season.released_count %>">
+                            <div class="season-image"
+                              style="background-image: url(https://image.tmdb.org/t/p/w92<%- season.poster %>);">
+                            </div>
+                            <div class="flex-seasons"><span><%- season.name %></span>
+                              <p><%- season?.episode_count %> Episodes</p>
+                            </div>
+                          </div>
+                          <% } }); %>
+                      </div>
+                      <div class="poster-container">
+                        <div class="inner-poster-container">
+                          <div class="outset-select">
+                            <div class="select-container seasons" onclick="selectParty(this)">
+                              <div class="select-inset"><span>Select season</span></div>
+                            </div>
+                            <div class="select-container episodes" onclick="selectParty(this)">
+                              <div class="select-inset"><span>Select episode</span></div>
+                            </div>
+                          </div>
+                          <div class="poster-inset-view">
+                            <div class="poster-v2" path="<%- (data.poster) %>"
+                              style="background-image: url(https://image.tmdb.org/t/p/w342<%- (data.poster) %>);">
+                            </div>
+                            <div class="movie-tagline"><span><%- (data.title) %></span>
+                              <p><%- (data.tagline || 'No avilable tagline' ) %></p>
+                              <div class="stars-v2"><text class="actual-rate"><%- ((data.numbers.rate || 0).toFixed(1) * 10)
+                                    %>%
+                                </text><text class="number-v2rt">(<%- formatNumber(data.numbers.raters || 0) %>)</text>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="buttons-poster">
+                            <div class="button-itme-v2poster watch" onclick="startParty();"><span>Create watch
+                                party</span></div>
+                            <div class="button-itme-v2poster translate" onclick="viewSubsErta()"><span>Show
+                                available
+                                subtitles</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="watch-providers loading">
+                        <div class="top-title-providers"></div>
+                        <div class="lds-roller-main">
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                        </div>
+                        <div class="single-provider"><span></span><a>Netflix</a></div>
+                        <div class="flex-providers">
+                        </div>
+                        <div class="providers-markup" href="https://www.justwatch.com/" onclick="getProvidersSource(this,true)"></div>
+                      </div>
+                    </div>
+                    <div class="novel-add-buttons">
+                      <div class="novel-container">
+                        <div class="buttons add-to-watchlist" onclick="AddToWatchList(this)"><a></a></div>
+                        <div class="buttons share" onclick="shareMovie()"></div>
+                        <div class="buttons rate-movie hidden"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="rest-v2-content">
+                    <div class="rest-container">
+                      <div class="actors-cast item-container">
+                        <div class="item-intertag"><span>Cast</span><a></a></div>
+                        <div class="inner-actors-cast">
+                          <div class="actor-v2">
+                            <div class="actor-image-v2 loading-el"></div>
+                            <div class="actor-v2-title loading"><span></span><a></a></div>
+                          </div>
+                          <div class="actor-v2">
+                            <div class="actor-image-v2 loading-el"></div>
+                            <div class="actor-v2-title loading"><span></span><a></a></div>
+                          </div>
+                          <div class="actor-v2">
+                            <div class="actor-image-v2 loading-el"></div>
+                            <div class="actor-v2-title loading"><span></span><a></a></div>
+                          </div>
+                          <div class="actor-v2">
+                            <div class="actor-image-v2 loading-el"></div>
+                            <div class="actor-v2-title loading"><span></span><a></a></div>
+                          </div>
+                          <div class="actor-v2">
+                            <div class="actor-image-v2 loading-el"></div>
+                            <div class="actor-v2-title loading"><span></span><a></a></div>
+                          </div>
+                          <div class="actor-v2">
+                            <div class="actor-image-v2 loading-el"></div>
+                            <div class="actor-v2-title loading"><span></span><a></a></div>
+                          </div>
+                          <div class="actor-v2">
+                            <div class="actor-image-v2 loading-el"></div>
+                            <div class="actor-v2-title loading"><span></span><a></a></div>
+                          </div>
+                          <div class="actor-v2">
+                            <div class="actor-image-v2 loading-el"></div>
+                            <div class="actor-v2-title loading"><span></span><a></a></div>
+                          </div>
+                          <div class="actor-v2">
+                            <div class="actor-image-v2 loading-el"></div>
+                            <div class="actor-v2-title loading"><span></span><a></a></div>
+                          </div>
+                        </div>
+                      </div>
+                      <% if(data.type=='series' ){ %>
+                        <div class="seasons item-container">
+                          <div class="item-intertag"><span>Seasons</span><a></a></div>
+                          <div class="inner-intergate">
+                            <div class="inset-intergate inset-seasons">
+                              <% data.seasons?.forEach(season=> { %>
+                                <div class="season" dataid="<%= season.id %>" number="<%= season.number %>">
+                                  <div class="season-blured"></div>
+                                  <div class="season-poster"
+                                    style="background-image: url(https://image.tmdb.org/t/p/w342/<%= season.poster || data.poster %>);">
+                                  </div>
+                                  <div class="season-titles">
+                                    <div class="inner-season-title"><span><a>
+                                          <%= season.name %>
+                                        </a><text>
+                                          <%= season.episode_count %> Episodes
+                                        </text></span>
+                                      <p>
+                                        <%= season.overview || data.overview %>
+                                      </p>
+                                    </div>
+                                    <div class="season-rates"><a>
+                                        <%= season.rate %>
+                                      </a></div>
+                                    <div class="view-more-season"></div>
+                                  </div>
+                                </div>
+                                <% }); %>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="episodes item-container">
+                          <div class="item-intertag"><span>Episodes</span><a></a></div>
+                          <div class="inner-intergate episodes-inner">
+                            <div class="inset-intergate episodes-intergate">
+                              <div class="episode loading">
+                                <div class="top-episodes-conut"></div>
+                                <div class="eps-back"></div>
+                                <div class="eps-body">
+                                  <div class="eps-title"><span></span>
+                                    <p></p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="episode loading">
+                                <div class="top-episodes-conut"></div>
+                                <div class="eps-back"></div>
+                                <div class="eps-body">
+                                  <div class="eps-title"><span></span>
+                                    <p></p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="episode loading">
+                                <div class="top-episodes-conut"></div>
+                                <div class="eps-back"></div>
+                                <div class="eps-body">
+                                  <div class="eps-title"><span></span>
+                                    <p></p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="episode loading">
+                                <div class="top-episodes-conut"></div>
+                                <div class="eps-back"></div>
+                                <div class="eps-body">
+                                  <div class="eps-title"><span></span>
+                                    <p></p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="episode loading">
+                                <div class="top-episodes-conut"></div>
+                                <div class="eps-back"></div>
+                                <div class="eps-body">
+                                  <div class="eps-title"><span></span>
+                                    <p></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <% } %>
+                          <div class="reviews-doc item-container  <%- data.reviews?.length > 0 ? '': 'hidden' %>">
+                            <div class="item-intertag"><span>Reviews</span><a></a></div>
+                            <div class="inner-intergate review-inner">
+                              <div class="inset-intergate review-intergate">
+                                <% data.reviews?.forEach(element=> { %>
+                                  <div class="v2-review">
+                                    <div class="season-blured"></div>
+                                    <div class="author-review-details">
+                                      <div class="author-avatar" style="background-image: url(<%- element.image %>);">
+                                      </div>
+                                    </div>
+                                    <div class="review-text-content">
+                                      <div class="author-text-user"><span><%- element.fullname %></span><a><%-
+                                            timeAgo(element.date) %></a>
+                                        <div class="more-review"></div>
+                                      </div>
+                                      <p class="text-mainrev-v2"><%- element.text %></p>
+                                      <div class="season-rates"><a><%- element.rate %></a></div>
+                                    </div>
+                                    <div class="like-menu-review">
+                                      <div class="like-button-review"></div>
+                                    </div>
+                                  </div>
+                                  <% }); %>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="v2-links item-container">
+                            <div class="item-intertag"><span>Similar</span><a></a></div>
+                            <div class="inner-intergate similar-inner">
+                              <div class="similar-inset">
+                                <div class="similar-poster loading-el"></div>
+                                <div class="similar-poster loading-el"></div>
+                                <div class="similar-poster loading-el"></div>
+                                <div class="similar-poster loading-el"></div>
+                                <div class="similar-poster loading-el"></div>
+                                <div class="similar-poster loading-el"></div>
+                                <div class="similar-poster loading-el"></div>
+                                <div class="similar-poster loading-el"></div>
+                                <div class="similar-poster loading-el"></div>
+                              </div>
+                            </div>
+                            <!--<div class="inner-intergate">
+              <div class="inset-intergate">
+                <div class="v2-link home">
+                  <span></span>
+                  <a>Website</a>
+                </div>
+                <div class="v2-link instagram">
+                  <span></span>
+                  <a>Instagram</a>
+                </div>
+                <div class="v2-link facebook">
+                  <span></span>
+                  <a>Facebook</a>
+                </div>
+                <div class="v2-link twitter">
+                  <span></span>
+                  <a>Twitter</a>
+                </div>
+                <div class="v2-link imdb">
+                  <span></span>
+                  <a>IMDB</a>
+                </div>
+                <div class="v2-link download">
+                  <span></span>
+                  <a>Torrent</a>
+                </div>
+              </div>
+            </div>-->
+                          </div>
+                          <!--<div class="networks">
+            <% if (data.networks) {data.networks?.forEach(network => { %><span>
+              <div class="network"><img src="https://image.tmdb.org/t/p/w185<%= network.logo_path %>"></div>
+            </span>
+            <% }); } %>
+          </div>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="watch-party-argument hidden">
+                <div class="argument-back"
+                  onclick="document.querySelector('.watch-party-argument').classList.add('hidden');"></div>
+                <div class="argument-body">
+                  <div class="party-argument">
+                    <div class="argument-head"><span>Important: Legal and Safe Use of Watch Party</span></div>
+                    <div class="party-argument-content">
+                      <i>Enjoy synchronizing your viewing experience with friends and family. Please adhere to these
+                        guidelines to ensure a safe and legal environment:</i>
+                      <ul>
+                        <li><strong>Legally Purchased Content Only</strong>: All participants in the Watch Party must
+                          have a legally purchased copy of the content they wish to watch. Using pirated or unauthorized
+                          content is strictly prohibited.</li>
+                        <li><strong>No Pirated Content</strong>: Sharing or streaming pirated content will result in
+                          immediate suspension of your account and may lead to legal action. We are committed to
+                          protecting the rights of content creators and adhering to copyright laws.</li>
+                        <li><strong>Family Viewing Compatibility</strong>: Ensure that the content you are watching is
+                          compatible with family viewing features. This includes content that is appropriate for all
+                          ages and adheres to the standards of family-friendly entertainment.</li>
+                        <li><strong>Responsible Use</strong>: The Watch Party feature is designed for synchronized,
+                          communal viewing of legal content. Do not use this feature to view or share any inappropriate
+                          or illegal material. Misuse of the feature will result in penalties and possible legal
+                          consequences.</li>
+                      </ul>
+                      <p>By following these guidelines, you can enjoy a seamless and enjoyable viewing experience with
+                        your loved ones. Thank you for your cooperation and for helping us maintain a safe and legal
+                        platform.</p>
+                      <strong style="padding-top: 14px;display: flex;">Happy watching!</strong>
+                    </div>
+                    <div class="conteniue-party check-target">
+                      <div class="i-agree-party" onclick="checkBox(this)">
+                        <div class="checkbox"></div>
+                        <p>I acknowledge that I have read and agree to the terms</p>
+                      </div>
+                      <div class="party-button-create" onclick="createParty()"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <script async="" type="application/javascript"
+                src="/private_js/singleMovie/singleMovieScript.js?dsfafdsh"></script>
+
+              <% if(req.params.endpoint.substring(0, 2)=='tt' || req.params.type !==data.type){ %>
+                <script>
+                  history.replaceState(null, '', 'https://ovtv.me/<%- (data.type || req.params.type) %>/<%- (data.id) %>');
+                </script>
+                <% } if (req.query.fetch !=='true' ) { %>
+                  <script async="" type="application/javascript" src="/js/global.js"></script>
+                  <script class="movie-info-json">
+                    production = {
+                      "countries": <%- JSON.stringify(data.countries || {}) %>,
+                      "companies": <%- JSON.stringify(data.companies || []) %>
+                    };
+                  </script>
+    </body>
+
+    </html>
+
+    <% } %>
