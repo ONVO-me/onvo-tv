@@ -625,6 +625,8 @@ a {
 
 .header-text p a {
     opacity: 1;
+    cursor: pointer;
+    user-select: none;
 }
 
 .buttons-error {
@@ -3918,4 +3920,67 @@ circle.download-proggress.completed {
 
 .dir-name.main.series .dir-info .card:nth-child(1) svg circle:last-of-type {
     stroke: transparent!important;
+}
+
+.open-vlc {
+    min-width: 100px;
+    height: 35px;
+    border-radius: 50px;
+    z-index: 9999;
+    background: #e28a33ad;
+    top: 0;
+    position: absolute;
+    left: 0;
+    margin-left: 6%;
+    margin-top: 25px;
+    display: none;
+    align-items: center;
+    font-family: 'movie';
+    font-size: 14px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.open-vlc:after {
+    content: 'Open in vlc';
+    margin-left: 42px;
+    margin-right: 20px;
+    color: #fff;
+}
+
+.open-vlc:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url(https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f0/99/15/f099158f-538d-8356-d7df-34813ff1481e/AppIcon-1x_U007emarketing-0-7-0-0-sRGB-85-220.png/434x0w.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+    margin-left: 12px;
+}
+
+
+.video-stream-container.loaded .open-vlc {
+    display: flex;
+}
+
+.buttons-error button.vlc {
+    background: #e28a33;
+}
+
+.buttons-error button.vlc:before {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: url(https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f0/99/15/f099158f-538d-8356-d7df-34813ff1481e/AppIcon-1x_U007emarketing-0-7-0-0-sRGB-85-220.png/434x0w.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+    margin-left: 20px;
+    left: 0;
+    margin-top: -3px;
 }
