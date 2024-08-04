@@ -1,221 +1,225 @@
 <html>
 
 <head>
-    <title>ONVO TV - Join the party </title>
-    <%- include('../ejs/global/globalHeader') %>
-        <script type="application/javascript" src="/js/moviesTrailer.js"></script>
-        <link rel="stylesheet" href="/css/swiper-bundle.min.css" />
-        <script src="/js/swiper-bundle.min.js"></script>
-        <link rel="stylesheet" href="/private_css/singleMovie/singleMovieStyle.css">
-        <link rel="stylesheet" href="/css/home.css?dsadfs">
+  <title>ONVO TV - Join the party </title>
+  <%- include('../ejs/global/globalHeader') %>
+  <script type="application/javascript" src="/js/moviesTrailer.js"></script>
+  <link rel="stylesheet" href="/css/swiper-bundle.min.css" />
+  <script src="/js/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="/private_css/singleMovie/singleMovieStyle.css">
+  <link rel="stylesheet" href="/css/home.css?dsadfs">
 </head>
 
 <body style="background: #000;">
-    <div class="backgrounds"><span></span></div>
+  <div class="backgrounds"><span></span></div>
 
+  </div>
+  <div class="menu">
+    <div class="logo"></div>
+    <div class="categories"><span>Privacy</span><span onclick="document.querySelector('.terms-page').classList.remove('hidden')">Terms</span><a href="https://onvo.me/plus" target="_blank">ONVO Plus</a><a href="https://tv.onvo.me/download" target="_blank">Download</a>
     </div>
-    <div class="menu">
-        <div class="logo"></div>
-        <div class="categories"><span>Privacy</span><span
-                onclick="document.querySelector('.terms-page').classList.remove('hidden')">Terms</span><a
-                href="https://onvo.me/plus" target="_blank">ONVO Plus</a><a href="https://tv.onvo.me/download"
-                target="_blank">Download</a>
+    <div class="login-search-container">
+      <div class="search-home" onfocus="showBrowse()">
+        <input type="text" class="search-input" oninput="searchInput(this)" placeholder="Search movie or series">
+      </div>
+      <div class="close-bcor hidden" onclick="closeSearch()"></div>
+      <div class="search-result-container hidden">
+        <div class="inset-search-mini">
         </div>
-        <div class="login-search-container">
-            <div class="search-home" onfocus="showBrowse()">
-                <input type="text" class="search-input" oninput="searchInput(this)"
-                    placeholder="Search movie or series">
-            </div>
-            <div class="close-bcor hidden" onclick="closeSearch()"></div>
-            <div class="search-result-container hidden">
-                <div class="inset-search-mini">
-                </div>
-            </div>
-            <div class="login-btn" onclick="login(this)"></div>
-            <div class="menu-icon" onclick="showMenu()"></div>
-            <div class="login-data"></div>
-        </div>
-        <div class="back-soaries"></div>
+      </div>
+      <div class="login-btn" onclick="login(this)"></div>
+      <div class="menu-icon" onclick="showMenu()"><div class="noti-count"></div></div>
+      <div class="login-data"></div>
     </div>
-    <div class="pages-container">
-        <div class="page movie-page movie-parent"></div>
-    </div>
+    <div class="back-soaries"></div>
+  </div>
+  <div class="pages-container">
+    <div class="page movie-page movie-parent"></div>
+  </div>
 
 
-    <div class="first-coverd-home">
-        <div class="movie-v2-background">
-            <div class="main-backs-containers">
-            </div>
-            <div class="shadowed-background"></div>
-        </div>
-        <div class="body-hccv">
-            <div class="v2-details-container">
+  <div class="first-coverd-home">
+    <div class="movie-v2-background">
+      <div class="main-backs-containers">
+      </div>
+      <div class="shadowed-background"></div>
+    </div>
+    <div class="body-hccv">
+      <div class="v2-details-container">
 
-            </div>
-            <div class="posters-hccv">
-                <div class="inset-posters-hccv">
+      </div>
+      <div class="posters-hccv">
+        <div class="inset-posters-hccv">
 
-                </div>
-            </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="swiper movies-home-main">
-        <div class="right-home-swipe" onclick="selectSwiper('next')"></div>
-        <div class="left-home-swipe" onclick="selectSwiper('prev')"></div>
-        <div class="swiper-wrapper">
-            <div class="swiper-slide title-data loading">
-                <div class="movie-home-slider">
-                    <div class="movie-image-slide"></div>
-                </div>
-            </div>
-            <div class="swiper-slide title-data loading">
-                <div class="movie-home-slider">
-                    <div class="movie-image-slide"></div>
-                </div>
-            </div>
-            <div class="swiper-slide title-data loading">
-                <div class="movie-home-slider">
-                    <div class="movie-image-slide"></div>
-                </div>
-            </div>
-            <div class="swiper-slide title-data loading">
-                <div class="movie-home-slider">
-                    <div class="movie-image-slide"></div>
-                </div>
-            </div>
-            <div class="swiper-slide title-data loading">
-                <div class="movie-home-slider">
-                    <div class="movie-image-slide"></div>
-                </div>
-            </div>
-            <div class="swiper-slide title-data loading">
-                <div class="movie-home-slider">
-                    <div class="movie-image-slide"></div>
-                </div>
-            </div>
-            <div class="swiper-slide title-data loading">
-                <div class="movie-home-slider">
-                    <div class="movie-image-slide"></div>
-                </div>
-            </div>
-            <div class="swiper-slide title-data loading">
-                <div class="movie-home-slider">
-                    <div class="movie-image-slide"></div>
-                </div>
-            </div>
-            <div class="swiper-slide title-data loading">
-                <div class="movie-home-slider">
-                    <div class="movie-image-slide"></div>
-                </div>
-            </div>
-            <div class="swiper-slide title-data loading">
-                <div class="movie-home-slider">
-                    <div class="movie-image-slide"></div>
-                </div>
-            </div>
-            <div class="swiper-slide title-data loading">
-                <div class="movie-home-slider">
-                    <div class="movie-image-slide"></div>
-                </div>
-            </div>
-            <div class="swiper-slide title-data loading">
-                <div class="movie-home-slider">
-                    <div class="movie-image-slide"></div>
-                </div>
-            </div>
+  <div class="swiper movies-home-main">
+    <div class="right-home-swipe" onclick="selectSwiper('next')"></div>
+    <div class="left-home-swipe" onclick="selectSwiper('prev')"></div>
+    <div class="swiper-wrapper">
+      <div class="swiper-slide title-data loading">
+        <div class="movie-home-slider">
+          <div class="movie-image-slide"></div>
         </div>
-        <div class="swiper-pagination"></div>
-        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-    </div>
-    <div class="pantagation-firsth"></div>
-    <div class="posters-pantgers">
-        <div class="inset-posters-pangers">
+      </div>
+      <div class="swiper-slide title-data loading">
+        <div class="movie-home-slider">
+          <div class="movie-image-slide"></div>
         </div>
-    </div>
-    <div class="movies-home-posters">
-        <div class="title"><span>Our today's trending for you</span></div>
-        <div class="swiper poster-home-swiper">
-            <div class="swiper-wrapper poster-home-wrapper">
-                <div class="swiper-slide loading">
-                    <div class="poster-hot">
-                        <div class="background-poster-hot"></div>
-                    </div>
-                </div>
-                <div class="swiper-slide loading">
-                    <div class="poster-hot">
-                        <div class="background-poster-hot"></div>
-                    </div>
-                </div>
-                <div class="swiper-slide loading">
-                    <div class="poster-hot">
-                        <div class="background-poster-hot"></div>
-                    </div>
-                </div>
-                <div class="swiper-slide loading">
-                    <div class="poster-hot">
-                        <div class="background-poster-hot"></div>
-                    </div>
-                </div>
-                <div class="swiper-slide loading">
-                    <div class="poster-hot">
-                        <div class="background-poster-hot"></div>
-                    </div>
-                </div>
-                <div class="swiper-slide loading">
-                    <div class="poster-hot">
-                        <div class="background-poster-hot"></div>
-                    </div>
-                </div>
-                <div class="swiper-slide loading">
-                    <div class="poster-hot">
-                        <div class="background-poster-hot"></div>
-                    </div>
-                </div>
-                <div class="swiper-slide loading">
-                    <div class="poster-hot">
-                        <div class="background-poster-hot"></div>
-                    </div>
-                </div>
-                <div class="swiper-slide loading">
-                    <div class="poster-hot">
-                        <div class="background-poster-hot"></div>
-                    </div>
-                </div>
-                <div class="swiper-slide loading">
-                    <div class="poster-hot">
-                        <div class="background-poster-hot"></div>
-                    </div>
-                </div>
-                <div class="swiper-slide loading">
-                    <div class="poster-hot">
-                        <div class="background-poster-hot"></div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="swiper-slide title-data loading">
+        <div class="movie-home-slider">
+          <div class="movie-image-slide"></div>
         </div>
-        <div class="panger-vgrs"></div>
-    </div>
-    <div class="title more-plans"><span>More picks for your favourite intersts</span></div>
-    <div class="titles-catigories-container">
-    </div>
-    <%- include('../global/watchlist') %>
-        <div class="bottom-vgr-menu">
-            <div class="inset-vgr-menu">
-                <div class="vgr-clocks home-vrso selected"></div>
-                <div class="vgr-clocks like like-collection"></div>
-                <div class="vgr-clocks share"></div>
-            </div>
+      </div>
+      <div class="swiper-slide title-data loading">
+        <div class="movie-home-slider">
+          <div class="movie-image-slide"></div>
         </div>
-        
-        <%- include('../global/errors') %>
-        <script type="application/javascript" src="/js/global.js?ewrqAsd"></script>
-        <script type="application/javascript" src="/js/home.js?ASd"></script>
-        <div class="global-json"></div>
-        <!--   <button type="button" style="width :100px; height:50px;font-size: 20px;" onclick="ONVO_Oauth().then(url => {window.location.href = url;})">login</button>
+      </div>
+      <div class="swiper-slide title-data loading">
+        <div class="movie-home-slider">
+          <div class="movie-image-slide"></div>
+        </div>
+      </div>
+      <div class="swiper-slide title-data loading">
+        <div class="movie-home-slider">
+          <div class="movie-image-slide"></div>
+        </div>
+      </div>
+      <div class="swiper-slide title-data loading">
+        <div class="movie-home-slider">
+          <div class="movie-image-slide"></div>
+        </div>
+      </div>
+      <div class="swiper-slide title-data loading">
+        <div class="movie-home-slider">
+          <div class="movie-image-slide"></div>
+        </div>
+      </div>
+      <div class="swiper-slide title-data loading">
+        <div class="movie-home-slider">
+          <div class="movie-image-slide"></div>
+        </div>
+      </div>
+      <div class="swiper-slide title-data loading">
+        <div class="movie-home-slider">
+          <div class="movie-image-slide"></div>
+        </div>
+      </div>
+      <div class="swiper-slide title-data loading">
+        <div class="movie-home-slider">
+          <div class="movie-image-slide"></div>
+        </div>
+      </div>
+      <div class="swiper-slide title-data loading">
+        <div class="movie-home-slider">
+          <div class="movie-image-slide"></div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+  </div>
+  <div class="pantagation-firsth"></div>
+  <div class="posters-pantgers">
+    <div class="inset-posters-pangers">
+    </div>
+  </div>
+  <div class="movies-home-posters">
+    <div class="title"><span>Our today's trending for you</span></div>
+    <div class="swiper poster-home-swiper">
+      <div class="swiper-wrapper poster-home-wrapper">
+        <div class="swiper-slide loading">
+          <div class="poster-hot">
+            <div class="background-poster-hot"></div>
+          </div>
+        </div>
+        <div class="swiper-slide loading">
+          <div class="poster-hot">
+            <div class="background-poster-hot"></div>
+          </div>
+        </div>
+        <div class="swiper-slide loading">
+          <div class="poster-hot">
+            <div class="background-poster-hot"></div>
+          </div>
+        </div>
+        <div class="swiper-slide loading">
+          <div class="poster-hot">
+            <div class="background-poster-hot"></div>
+          </div>
+        </div>
+        <div class="swiper-slide loading">
+          <div class="poster-hot">
+            <div class="background-poster-hot"></div>
+          </div>
+        </div>
+        <div class="swiper-slide loading">
+          <div class="poster-hot">
+            <div class="background-poster-hot"></div>
+          </div>
+        </div>
+        <div class="swiper-slide loading">
+          <div class="poster-hot">
+            <div class="background-poster-hot"></div>
+          </div>
+        </div>
+        <div class="swiper-slide loading">
+          <div class="poster-hot">
+            <div class="background-poster-hot"></div>
+          </div>
+        </div>
+        <div class="swiper-slide loading">
+          <div class="poster-hot">
+            <div class="background-poster-hot"></div>
+          </div>
+        </div>
+        <div class="swiper-slide loading">
+          <div class="poster-hot">
+            <div class="background-poster-hot"></div>
+          </div>
+        </div>
+        <div class="swiper-slide loading">
+          <div class="poster-hot">
+            <div class="background-poster-hot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panger-vgrs"></div>
+  </div>
+  <div class="parties-explore">
+    <div class="title more-plans"><span>Running parties by users</span></div>
+    <div class="outset-parties">
+      <div class="inset-parties">
+
+      </div>
+    </div>
+  </div>
+  <div class="title more-plans"><span>More picks for your favourite intersts</span></div>
+  <div class="titles-catigories-container">
+  </div>
+  <%- include('../global/watchlist') %>
+  <div class="bottom-vgr-menu">
+    <div class="inset-vgr-menu">
+      <div class="vgr-clocks home-vrso selected"></div>
+      <div class="vgr-clocks like like-collection"></div>
+      <div class="vgr-clocks share"></div>
+    </div>
+  </div>
+  <%- include('../global/share') %>
+  <%- include('../global/errors') %>
+  <script type="application/javascript" src="/js/global.js?ewrqAsd"></script>
+  <script type="application/javascript" src="/js/home.js?ASd"></script>
+  <div class="global-json"></div>
+  <!--   <button type="button" style="width :100px; height:50px;font-size: 20px;" onclick="ONVO_Oauth().then(url => {window.location.href = url;})">login</button>
         -->
 
-        <!--    <button type="button" style="width :100px; height:50px;font-size: 20px;" onclick="ONVO_Oauth().then(url => {window.location.href = url;})">login</button>
+  <!--    <button type="button" style="width :100px; height:50px;font-size: 20px;" onclick="ONVO_Oauth().then(url => {window.location.href = url;})">login</button>
 -->
 
 </body>

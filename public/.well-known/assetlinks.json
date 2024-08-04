@@ -1,14 +1,11 @@
 [
   {
-    "relation": [
-      "delegate_permission/common.handle_all_urls"
-    ],
+    "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
       "package_name": "me.onvo.tv",
-      "sha256_cert_fingerprints": [
-        "F2:DE:D3:2D:B3:E6:43:98:A5:C5:54:CC:A2:D8:13:DB:67:27:CC:E6:FB:BB:A9:AE:25:EF:83:9F:91:36:B5:9C"
-      ]
+      "sha256_cert_fingerprints":
+        ["50:93:89:46:3E:FF:5B:F8:6C:14:2D:85:47:EE:1E:14:90:4A:2C:84:C5:1A:3F:36:A4:9D:0A:7A:D4:13:2D:F4"]
     }
   }
 ]

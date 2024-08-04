@@ -1052,6 +1052,7 @@ text.number-v2rt {
     background-position: center;
     margin-right: 20px;
     border-radius: 20px;
+    background-color: rgb(255 255 255 / 10%);
 }
 
 .body-hccv {
@@ -1526,11 +1527,13 @@ text.number-v2rt {
     
     .titles-catigories-container {
         margin-top: 250px;
-        z-index: 99999;
+        z-index: 9999;
         position: relative;
     }
 }
-
+.share-btns {
+    margin-right: auto;
+}
 .titles-catigories-container .stars-v2:after {
     visibility: hidden;
 }

@@ -15,9 +15,7 @@ function calculateSize(obj) {
 
 async function getData(type, id, season, episode, dir = 'data', chache = true, ttl = 120) {
     const cacheKey = `${type}_${id}`;
-    while (!fetch) {
-        await new Promise(resolve => setTimeout(resolve, 50));
-    }
+
     const cachedData = cache.get(cacheKey);
     if (cachedData) {
         return cachedData;
@@ -28,14 +26,14 @@ async function getData(type, id, season, episode, dir = 'data', chache = true, t
                 'Content-Type': 'application/json'
             }
         });
+        const data = await response.json()
         if (chache) {
-            cache.set(cacheKey, response.data, ttl);
+            cache.set(cacheKey, data, ttl);
         }
-        saveJson(response.data, cacheKey)
-        const data = await response.json();
+        saveJson(data, cacheKey)
         return data;
     } catch (error) {
-        const jsonPath = path.join(__dirname, '../', 'public', 'offline', 'json', `${cacheKey}.json`);
+        const jsonPath = path.join(__dirname,'../', 'public', 'offline', 'json',`${cacheKey}.json`);
         if (fs.existsSync(jsonPath)) {
             const json = fs.readFileSync(jsonPath, 'utf8');
             return JSON.parse(json)

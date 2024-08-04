@@ -2190,6 +2190,7 @@ img.masked {
     background: rgb(255 255 255 / 20%);
     z-index: 99;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: none;
 }
 
@@ -3228,4 +3229,10 @@ media screen for the page
     background: #fff;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: left center;
+}
+
+@media screen and (max-height: 500px) {
+    .argument-body {
+        height: 100vh;
+    }    
 }

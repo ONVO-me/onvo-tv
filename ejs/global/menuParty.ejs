@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="login-btn" onclick="login(this)"></div>
-            <div class="menu-icon" onclick="showMenu()"></div>
+            <div class="menu-icon" onclick="showMenu()"><div class="noti-count"></div></div>
             <div class="login-data"></div>
         </div>
     </div>
@@ -27,3 +27,20 @@
         </div>
     </div>
 </div>
+<div class="files-selector hidden">
+    <div class="subtitles-back"></div>
+    <div class="body-selecters">
+      <div class="header-tops-files"><span>Chose Video to play</span>
+        <p>This source contains multiple videos, please chose your desired video to play, also check
+          files you
+          want to download</p>
+      </div>
+      <div class="outset-zby">
+        <div class="inset-selectors-check"></div>
+      </div>
+      <div class="buttons-files">
+        <button class="btnfs-all download-sall" onclick="firePromisePlay('all')"><span>Download
+            selected items & play</span></button><button class="btnfs-all play-eps" onclick="firePromisePlay('eps')"><span>Play episode only</span></button>
+      </div>
+    </div>
+  </div>

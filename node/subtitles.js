@@ -9,8 +9,8 @@ const cheerio = require('cheerio');
 async function scrap(url) {
     try {
         const response = await fetch(url);
-        const data = await response.text();
-        const $ = cheerio.load(data);
+        const textData = await response.text();
+        const $ = cheerio.load(textData);
         let json = '';
         $('#__NEXT_DATA__').each((index, element) => {
             json += $(element).text();
@@ -77,20 +77,17 @@ function convertToUTF8(contentBuffer) {
     return contentBuffer.toString('utf8');
 }
 
-async function getZipFile(url) {
-    const response = await fetch(url);
-    const arrayBuffer = await response.arrayBuffer();
-    return arrayBuffer;
-}
-
 const fetchAndExtractZip = async (zipUrl) => {
     const unzipper = require('unzipper');
 
     try {
-        const response = await getZipFile(zipUrl);
-        const buffer = Buffer.from(response);
+        const response = await fetch(zipUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const arrayBuffer = await response.arrayBuffer();
         const files = [];
-        await unzipper.Open.buffer(buffer).then((zipfile) => {
+        await unzipper.Open.buffer(Buffer.from(arrayBuffer)).then((zipfile) => {
             return Promise.all(zipfile.files.map(async (file) => {
                 const fileName = file.path;
                 const contentBuffer = await file.buffer();

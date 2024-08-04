@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload with Progress Bar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .file-upload {
+            margin: 20px 0;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #f3f3f3;
+            margin-top: 10px;
+        }
+        .progress-bar-fill {
+            display: block;
+            height: 20px;
+            background-color: #4caf50;
+            width: 0;
+        }
+        .message {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>File Upload</h1>
+        <form id="upload-form" class="file-upload">
+            <input type="file" id="file" name="file" required>
+            <button type="submit">Upload</button>
+        </form>
+        <div class="progress-bar" id="progress-bar">
+            <span class="progress-bar-fill" id="progress-bar-fill"></span>
+        </div>
+        <div class="message" id="message"></div>
+    </div>
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const fileInput = document.getElementById('file');
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/upload', true);
+
+            xhr.upload.addEventListener('progress', function(e) {
+                if (e.lengthComputable) {
+                    const percentComplete = (e.loaded / e.total) * 100;
+                    document.getElementById('progress-bar-fill').style.width = percentComplete + '%';
+                }
+            });
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById('message').innerText = 'File uploaded successfully.';
+                } else {
+                    document.getElementById('message').innerText = 'File upload failed.';
+                }
+            };
+
+            xhr.send(formData);
+        });
+    </script>
+</body>
+</html>

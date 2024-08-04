@@ -2007,7 +2007,90 @@ textarea.movie-review-textare {
 }
 
 @media screen and (max-width: 600px) {
-
+    .parties-explore {
+        display: none;
+    }
+    .parties-screen-body {
+        display: grid;
+        position: fixed;
+        z-index: 99999;
+        right: 0;
+        left: 0;
+        justify-content: center;
+        width: 100%;
+        margin: auto;
+        top: 0;
+    }
+    
+    .parties-screen-body .party-component {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 23px;
+        background: rgb(255 255 255 / 10%) !important;
+    }
+    
+    .outset-shitf-parties {
+        display: grid;
+        width: 88vw;
+        margin-top: 0;
+        height: calc(100vh - 125px);
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+    
+    .parties-screen-body .party-user-explore section {
+        margin-right: 45px;
+    }
+    
+    .parties-screen-running .subtitles-back {
+        -webkit-backdrop-filter: blur(25px);
+        background: rgb(0 0 0 / 78%);
+        backdrop-filter: blur(25px);
+    }
+    
+    .parties-screen-body .party-component:before {
+        background: #000000db;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        visibility: hidden;
+    }
+    
+    .descript-parties {
+        position: absolute;
+        color: #fff;
+        opacity: 0.5;
+        border-left: 1px solid rgb(255 255 255 / 20%);
+        font-family: 'movie';
+        font-weight: 100;
+        font-size: 14px;
+        margin-top: 58px;
+        margin-left: calc(6% + 125px);
+        padding-left: 12px;
+    }
+    
+    .back-parties:before {
+        position: absolute;
+        right: 0;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        -webkit-mask-image: url(/media/svg/Broken/Arrow%20-%20Down%202.svg);
+        -webkit-mask-position: center;
+        -webkit-mask-size: 24px;
+        -webkit-mask-repeat: no-repeat;
+        display: flex;
+    }
+    
+    .back-parties {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        right: 0;
+        margin-right: 6%;
+        margin-top: 43px;
+        z-index: 999;
+    }
     .close-bcor {
         content: '';
         width: 125%;
@@ -2447,7 +2530,8 @@ input#videoStatusBar {
     justify-content: center;
     align-items: center;
     border-top: 1px solid rgb(255 255 255 / 10%);
-    padding-top: 8px;
+    padding-top: 6px;
+    margin-bottom: -3px;
 }
 .dir-option {
     display: flex;
@@ -3386,7 +3470,7 @@ input#videoStatusBar {
 }
 
 .magic-portal-create.running .create-magic-portal:before {
-    -webkit-mask-image: url(https://s3-iconly.sfo3.digitaloceanspaces.com/png-icons/stop%20circle-104-1663582019.png);
+    -webkit-mask-image: url(/assets/stop%20circle-104-1663582019.png);
     background: #fff;
 }
 
@@ -3457,7 +3541,6 @@ input#videoStatusBar {
     width: 50px;
     height: 50px;
     background: #fff;
-    background-image: url(https://public-api.qr-code-generator.com/v1/create/free?image_format=PNG&image_width=300&download=1&foreground_color=%23000000&frame_color=%23000000&frame_name=no-frame&qr_code_logo=&qr_code_pattern=&qr_code_text=http%3A%2F%2F192.168.1.5%3A5000);
     border-radius: 10px;
     background-size: contain;
     background-position: center;
@@ -3783,7 +3866,6 @@ input#videoStatusBar {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url(https://image.tmdb.org/t/p/w500/9sS5Pq96kCR3RKoWvGvT6Xa2urU.jpg);
     background-color: rgb(255 255 255 / 10%);
 }
 
@@ -3983,4 +4065,542 @@ circle.download-proggress.completed {
     margin-left: 20px;
     left: 0;
     margin-top: -3px;
+}
+
+
+/* party explore */
+
+
+.parties-explore {
+    height: 300px;
+    margin-bottom: 200px;
+    background-position: left top;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.outset-parties {
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
+.inset-parties {
+    display: flex;
+    margin-left: 6%;
+    width: fit-content;
+}
+
+.party-component {
+    width: 375px;
+    height: fit-content;
+    background: #ffffff14;
+    border-radius: 30px;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: revert;
+    margin-right: 25px;
+}
+
+.party-user-explore {
+    display: flex;
+    color: #fff;
+    font-family: 'movie';
+    font-size: 14px;
+    margin-top: 16px;
+    align-items: center;
+    position: relative;
+    width: calc(100% - 100px);
+}
+
+.party-user-explore span {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgb(255 255 255 / 10%);
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+.party-user-explore section {
+    margin-left: 50px;
+    margin-right: 65px;
+    display: grid;
+    cursor: pointer;
+}
+
+.party-user-explore section * {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+}
+
+.party-user-explore section a {
+    color: rgb(255 255 255 / 50%);
+}
+
+.join-party-explore {
+    position: absolute;
+    right: 0;
+    background: linear-gradient(45deg, rgb(255 255 255 / 10%) 9%, rgb(255 255 255 / 15%), transparent);
+    border-radius: 50px;
+    height: 38px;
+    align-items: center;
+    display: flex;
+    padding: 0 18px;
+    font-family: 'movie';
+    color: #fff;
+    cursor: pointer;
+    bottom: 0;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+.join-party-explore span {
+    line-height: 20px;
+    margin-top: -3px;
+}
+
+.bottom-flex-ptexplore {
+    position: relative;
+    bottom: 0;
+    margin: auto;
+    margin-bottom: 20px;
+    display: flex;
+    height: fit-content;
+    min-height: 40px;
+    align-items: center;
+    width: calc(100% - 50px);
+    right: 0;
+    left: 0;
+    margin-top: 20px;
+    border-top: 1px solid rgb(255 255 255 / 10%);
+}
+
+.uesers-ptexplore {
+    display: flex;
+    color: #fff;
+    font-family: 'movie';
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    display: none;
+}
+
+.uesers-ptexplore section {
+    display: flex;
+    display: none;
+}
+
+.uesers-ptexplore section span {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 10%);
+    margin-right: 5px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.uesers-ptexplore a {
+    opacity: 0.3;
+    margin-left: 6px;
+}
+
+.share-party-explore {
+    position: absolute;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.share-party-explore:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    -webkit-mask-image: url(/assets/share-55-1662381999.png);
+    -webkit-mask-position: center;
+    -webkit-mask-size: 24px;
+    -webkit-mask-repeat: no-repeat;
+}
+
+.body-explores {
+    width: calc(100% - 50px);
+    right: 0;
+    left: 0;
+    margin: auto;
+    margin-top: 25px;
+    display: flex;
+    color: #fff;
+    font-family: 'movie';
+    font-size: 14px;
+    /* border-top: 1px solid rgb(255 255 255 / 10%); */
+    z-index: 999;
+    position: relative;
+    cursor: pointer;
+}
+
+.poster-party-explore {
+    width: 70px;
+    height: 105px;
+    background-color: rgb(255 255 255 / 10%);
+    border-radius: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.body-explores section {
+    margin-left: 15px;
+    display: grid;
+    height: fit-content;
+}
+
+.body-explores section p {
+    opacity: 0.5;
+    display: flex;
+}
+
+.body-explores section p:before {}
+
+.body-explores section span {
+    margin-bottom: 6px;
+}
+
+.body-explores section .stars-v2 {
+    margin-bottom: 10px;
+}
+
+.body-explores section p:before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    -webkit-mask-image: url(/assets/clock%20dash-79-1658435834.png);
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    display: flex;
+    margin-right: 5px;
+}
+
+.body-explores section text.number-v2rt {
+    margin-left: 18px;
+}
+
+.party-component:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #000000e8, #000000f0, #000000d1);
+    z-index: 0;
+    /* backdrop-filter: blur(9px); */
+    border-radius: 30px;
+}
+
+.join-party-explore:before {
+    content: '';
+}
+
+
+.logo-party-explore {
+    height: 50px;
+    width: 90px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: auto;
+    background-size: contain;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    transform: rotate(-90deg);
+    margin-right: -20px;
+    margin-top: 33px;
+}
+
+.menu-source-explore {
+    color: #fff;
+    margin-top: 125px;
+    margin-bottom: 20px;
+    display: flex;
+    font-family: 'movie';
+    font-size: 14px;
+    position: relative;
+}
+
+.selector-explore {
+    margin: auto;
+    height: 40px;
+    border-radius: 50px;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.selector-explore.selected {
+    background: rgb(255 255 255 / 10%);
+}
+
+.inset-shitmenu-explore {
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+
+.selector-explore.all-parties.selected {
+    margin-left: 0;
+}
+
+.selector-explore.link-explore {
+    margin-right: 0;
+}
+
+.selector-explore span {
+    margin-top: -4px;
+    color: #ffffff52;
+}
+
+.selector-explore.selected span {
+    color: #fff;
+}
+
+.selector-explore span a {
+    color: #fff;
+}
+
+.party-component.loading-explore .body-explores section span:before, .party-component.loading-explore .body-explores section span:after,.party-component.loading-explore .body-explores section:after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 14px;
+    border-radius: 20px;
+    background: rgb(255 255 255 / 10%);
+    margin-top: 15px;
+}
+
+.party-component.loading-explore .body-explores section span:after {
+    margin-top: 40px;
+    width: 32%;
+}
+
+.party-component.loading-explore  .bottom-flex-ptexplore {
+    height: 50px;
+}
+
+.party-component.loading-explore .bottom-flex-ptexplore:before,.party-component.loading-explore .bottom-flex-ptexplore:after {
+    content: '';
+    position: absolute;
+    width: 45%;
+    height: 12px;
+    background: rgb(255 255 255 / 10%);
+    border-radius: 50px;
+    margin-left: 55px;
+    margin-top: -5px;
+}
+.party-component:last-child {
+    margin-bottom: 200px;
+}
+.party-component.loading-explore .bottom-flex-ptexplore:after {
+    margin-top: 38px;
+    width: 30%;
+}
+
+.party-component.loading-explore .body-explores section:after {
+    margin-top: 65px;
+    width: 38%;
+}
+
+.noti-count {
+    color: #fff;
+    font-family: 'movie';
+    font-size: 10px;
+    padding: 2px 4px;
+    background: #6c63ff;
+    border-radius: 50px;
+    width: fit-content;
+    position: absolute;
+    margin-top: 25px;
+    margin-left: 10px;
+}
+
+.noti-count:empty {
+    display: none;
+}
+
+.mobile-menu-element .noti-count {
+    left: 0;
+    margin-top: 10px;
+    right: 0;
+    margin-left: 33px;
+}
+
+.selector-explore .noti-count {
+    margin-top: 0;
+    right: 0;
+    margin-right: 12px;
+}
+
+.selector-explore {
+    position: relative;
+}
+
+.explore-container.invite-parties .outset-shitf-parties,.explore-container.invite-parties .insert-link-parties {
+    display: none;
+}
+
+.explore-container {
+    width: 88vw;
+    right: 0;
+    left: 0;
+    margin: auto;
+    position: relative;
+}
+
+.invites-parties {
+    display: none;
+}
+
+.insert-link-parties {
+    display: none;
+}
+
+.explore-container.invite-parties .invites-parties {
+    display: grid;
+    height: fit-content;
+}
+
+.explore-container.invite-parties .invites-parties:empty:before {
+    content: '';
+    width: 100%;
+    height: 200px;
+    display: flex;
+    -webkit-mask-image: url(/assets/aliens-5-1687505497.png);
+    -webkit-mask-size: 110px;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    background: #fff;
+    opacity: 0.2;
+}
+
+.explore-container.invite-parties .invites-parties:empty:after {
+    content: 'No invites found, try find some friends';
+    color: #fff;
+    font-family: 'movie';
+    font-weight: 100;
+    right: 0;
+    left: 0;
+    width: fit-content;
+    position: relative;
+    margin: auto;
+    opacity: 0.3;
+}
+
+.invites-parties {
+    width: 100%;
+}
+
+.explore-container.link-parties .outset-shitf-parties ,.explore-container.link-parties .invites-parties {
+    display: none;
+}
+
+.explore-container.link-parties .insert-link-parties {
+    display: grid;
+}
+
+.join-by-link {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background: rgb(255 255 255 / 10%);
+    border-radius: 20px;
+    margin-top: 30px;
+}
+
+.join-by-link input {
+    color: #fff;
+    background: transparent;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-family: 'movie';
+    font-size: 14px;
+    margin-left: 60px;
+}
+
+.join-by-link input::placeholder {
+    color: rgb(255 255 255 / 20%);
+}
+
+.submit-join-link {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #6c63ff;
+    border-radius: 20px;
+    margin-top: 20px;
+    transition: 0.2s;
+}
+.disabled {
+    opacity: 0.5;
+}
+.submit-join-link:before {
+    content: 'Join party';
+    color: #fff;
+    font-family: 'movie';
+    font-size: 14px;
+}
+
+.join-by-link:before {
+    width: 35px;
+    height: 35px;
+    content: '';
+    margin-left: 10px;
+    -webkit-mask-image: url(/assets/cinema%204d-121-1693375845.png);
+    -webkit-mask-position: center;
+    -webkit-mask-size: 24px;
+    -webkit-mask-repeat: no-repeat;
+    background: #fff;
+    opacity: 0.3;
+    position: absolute;
+}
+
+
+.submit-join-link:after {
+    width: 35px;
+    height: 35px;
+    content: '';
+    margin-left: 10px;
+    -webkit-mask-image: url(/media/svg/Broken/Arrow%20-%20Right.svg);
+    -webkit-mask-position: center;
+    -webkit-mask-size: 24px;
+    -webkit-mask-repeat: no-repeat;
+    background: #fff;
+    right: 0;
+    position: absolute;
+    margin-right: 17px;
+}
+
+.insert-link-parties:after {
+    content: 'Make your frined share with you party link, and insert it to join the party manually';
+    color: #fff;
+    font-family: 'movie';
+    font-size: 12px;
+    font-weight: 100;
+    opacity: 0.5;
+    margin-top: 20px;
+    line-height: 18px;
 }

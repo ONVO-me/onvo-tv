@@ -14,20 +14,15 @@ function extractFilename(url) {
     }
     return null;
 }
-
 function getRedirectUrl(url) {
     const urlObj = new URL(url);
     return urlObj.searchParams.get('r');
 }
-
 async function scrap(url) {
     try {
-        while (!fetch) {
-            await new Promise(resolve => setTimeout(resolve, 50));
-        }
-        const response = await fetch(url, { responseType: 'text' });
-        const data = await response.text();
-        const $ = cheerio.load(data);
+        const response = await fetch(url);
+        const textData = await response.text();
+        const $ = cheerio.load(textData);
         let json = {};
         const redirectUrl = $('.header_poster_wrapper .right_column p a').attr('href');
         $('.providers').each((index, element) => {
@@ -38,9 +33,9 @@ async function scrap(url) {
                 json[imgSrc] = getRedirectUrl(href);
             });
         });
-        return { links: json, justWatch: redirectUrl };
+        return {links: json,justWatch: redirectUrl};
     } catch (e) {
-        return { error: e }
+        return {error: e}
     }
 }
 

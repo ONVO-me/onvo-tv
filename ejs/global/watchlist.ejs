@@ -1,24 +1,65 @@
 <div class="watch-list-page actual-watch hidden">
-    <div class="watch-list-back" onclick="closeWatchList(this)"></div>
-    <div class="watch-list-container actual-watch-container" dtload="0">
-        <div class="title-watch-list"><a>
-                <p>14</p>
-            </a></div>
-        <div class="outset-watch-list">
-            <div class="inset-watch-list">
-                <div class="watchlist-appended"><p></p></div><div class="firstwatchappend poster-watch loading"></div><div class="poster-watch loading"></div><div class="poster-watch loading"></div><div class="poster-watch loading"></div><div class="poster-watch loading"></div><div class="poster-watch loading"></div><div class="poster-watch loading"></div><div class="poster-watch loading"></div><div class="poster-watch loading"></div><div class="poster-watch loading"></div><div class="poster-watch loading"></div><div class="poster-watch loading"></div><div class="poster-watch loading"></div><div class="poster-watch loading"></div><div class="poster-watch loading"></div>
-            </div>
+  <div class="watch-list-back" onclick="closeWatchList(this)"></div>
+  <div class="watch-list-container actual-watch-container" dtload="0">
+    <div class="title-watch-list"><a>
+        <p>14</p>
+      </a></div>
+    <div class="outset-watch-list">
+      <div class="inset-watch-list">
+        <div class="watchlist-appended">
+          <p></p>
         </div>
+        <div class="firstwatchappend poster-watch loading"></div>
+        <div class="poster-watch loading"></div>
+        <div class="poster-watch loading"></div>
+        <div class="poster-watch loading"></div>
+        <div class="poster-watch loading"></div>
+        <div class="poster-watch loading"></div>
+        <div class="poster-watch loading"></div>
+        <div class="poster-watch loading"></div>
+        <div class="poster-watch loading"></div>
+        <div class="poster-watch loading"></div>
+        <div class="poster-watch loading"></div>
+        <div class="poster-watch loading"></div>
+        <div class="poster-watch loading"></div>
+        <div class="poster-watch loading"></div>
+        <div class="poster-watch loading"></div>
+      </div>
     </div>
+  </div>
 </div>
 <div class="downloads-open hidden">
-    <div class="watch-list-back" onclick="closeDownloads(this)"></div>
-    <div class="watch-list-container actual-downloads-open">
-        <div class="title-watch-list"><a>
-                <p></p>
-            </a></div>
-        <div class="dirsdownlaods">
-            
-        </div>
+  <div class="watch-list-back" onclick="closeDownloads(this)"></div>
+  <div class="watch-list-container actual-downloads-open">
+    <div class="title-watch-list"><a>
+        <p></p>
+      </a></div>
+    <div class="dirsdownlaods">
     </div>
+  </div>
+</div>
+<div class="parties-screen-running hidden">
+  <div class="subtitles-back" onclick="closeParty()"></div>
+  <div class="parties-screen-body">
+    <div class="logo"></div>
+    <div class="descript-parties"><a>Watch parties</a></div>
+    <div class="back-parties" onclick="closeParty()"></div>
+    <div class="explore-container">
+      <div class="menu-source-explore">
+        <div class="inset-shitmenu-explore">
+          <div class="selector-explore all-parties selected" onclick="selectParties('all-parties',this);"><span>All parties</span></div>
+          <div class="selector-explore invites-explore" onclick="selectParties('invite-parties',this);"><span>Invites</span>
+            <div class="noti-count"></div>
+          </div>
+          <div class="selector-explore link-explore" onclick="selectParties('link-parties',this);"><span>Join by link</span></div>
+        </div>
+      </div>
+      <div class="outset-shitf-parties"></div>
+      <div class="invites-parties"></div>
+      <div class="insert-link-parties">
+        <div class="join-by-link"><input type="text" placeholder="insert party invite link"></div>
+        <div class="submit-join-link"></div>
+      </div>
+    </div>
+  </div>
 </div>
