@@ -9,27 +9,5 @@
     "start": "node main.js"
   },
   "message": "Testing remote update",
-  "license": "CC-BY-NC-ND-4.0",
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "busboy": "^1.6.0",
-    "cheerio": "^1.0.0-rc.12",
-    "cors": "^2.8.5",
-    "dns": "^0.2.2",
-    "ejs": "^3.1.10",
-    "express": "^4.19.2",
-    "iconv-lite": "^0.6.3",
-    "mime": "^4.0.3",
-    "network": "^0.7.0",
-    "node-cache": "^5.1.2",
-    "node-fetch": "^3.3.2",
-    "node-ssdp": "^4.0.1",
-    "parse-torrent": "^11.0.17",
-    "portfinder": "^1.0.32",
-    "qrcode": "^1.5.3",
-    "tmp": "^0.2.3",
-    "unzipper": "^0.12.1",
-    "webtorrent": "^1.9.7",
-    "ws": "^8.17.1"
-  }
+  "license": "CC-BY-NC-ND-4.0"
 }
