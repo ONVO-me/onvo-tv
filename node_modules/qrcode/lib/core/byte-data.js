@@ -1,12 +1,12 @@
+const encodeUtf8 = require('encode-utf8')
 const Mode = require('./mode')
 
 function ByteData (data) {
   this.mode = Mode.BYTE
   if (typeof (data) === 'string') {
-    this.data = new TextEncoder().encode(data)
-  } else {
-    this.data = new Uint8Array(data)
+    data = encodeUtf8(data)
   }
+  this.data = new Uint8Array(data)
 }
 
 ByteData.getBitsLength = function getBitsLength (length) {

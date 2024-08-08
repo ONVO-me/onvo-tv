@@ -1,5 +1,4 @@
-import { text2arr } from 'uint8-util'
-import { digitCount, getType } from './util.js'
+const { digitCount, getType } = require('./util.js')
 
 function listLength (list) {
   let length = 1 + 1 // type marker + end-of-type marker
@@ -15,7 +14,7 @@ function mapLength (map) {
   let length = 1 + 1 // type marker + end-of-type marker
 
   for (const [key, value] of map) {
-    const keyLength = text2arr(key).byteLength
+    const keyLength = Buffer.byteLength(key)
     length += digitCount(keyLength) + 1 + keyLength
     length += encodingLength(value)
   }
@@ -28,7 +27,7 @@ function objectLength (value) {
   const keys = Object.keys(value)
 
   for (let i = 0; i < keys.length; i++) {
-    const keyLength = text2arr(keys[i]).byteLength
+    const keyLength = Buffer.byteLength(keys[i])
     length += digitCount(keyLength) + 1 + keyLength
     length += encodingLength(value[keys[i]])
   }
@@ -37,7 +36,7 @@ function objectLength (value) {
 }
 
 function stringLength (value) {
-  const length = text2arr(value).byteLength
+  const length = Buffer.byteLength(value)
   return digitCount(length) + 1 + length
 }
 
@@ -54,6 +53,7 @@ function encodingLength (value) {
   const type = getType(value)
 
   switch (type) {
+    case 'buffer': return digitCount(value.length) + 1 + value.length
     case 'arraybufferview': return arrayBufferLength(value)
     case 'string': return stringLength(value)
     case 'array': case 'set': return listLength(value)
@@ -66,4 +66,4 @@ function encodingLength (value) {
   }
 }
 
-export default encodingLength
+module.exports = encodingLength
