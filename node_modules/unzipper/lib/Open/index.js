@@ -94,6 +94,7 @@ module.exports = {
     return directory(source, options);
   },
   s3_v3: function (client, params, options) {
+    //@ts-ignore
     const { GetObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3');
     const source = {
       size: async () => {

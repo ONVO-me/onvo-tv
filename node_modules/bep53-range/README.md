@@ -26,11 +26,11 @@ npm install bep53-range
 Parse Magnet URI extension (BEP53) range and return all included values.
 
 ```js
-const bep53Range = require('bep53-range')
+import { parse } from 'bep53-range'
 
 const range = ['1-3', '6', '11-13']
 
-const values = bep53Range.parse(range)
+const values = parse(range)
 console.log(values) // [1, 2, 3, 6, 11, 12, 13]
 
 ```
@@ -40,11 +40,11 @@ console.log(values) // [1, 2, 3, 6, 11, 12, 13]
 Compose Magnet URI extension (BEP53) range from all included values.
 
 ```js
-const bep53Range = require('bep53-range')
+import { compose } from 'bep53-range'
 
 const values = [1, 2, 3, 6, 11, 12, 13]
 
-const range = bep53Range.compose(values)
+const range = compose(values)
 console.log(range) // ['1-3', '6', '11-13']
 ```
 

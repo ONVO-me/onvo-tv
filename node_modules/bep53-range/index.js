@@ -1,7 +1,3 @@
-module.exports = parseRange
-module.exports.parse = parseRange
-module.exports.compose = composeRange
-
 function composeRange (range) {
   return range
     .reduce((acc, cur, idx, arr) => {
@@ -22,4 +18,11 @@ function parseRange (range) {
       const r = cur.split('-').map(cur => parseInt(cur))
       return acc.concat(generateRange(...r))
     }, [])
+}
+
+export default parseRange
+
+export {
+  parseRange as parse,
+  composeRange as compose
 }
