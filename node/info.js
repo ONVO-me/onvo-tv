@@ -87,17 +87,17 @@ async function getInfo(dirPath) {
         }
         const directoryStructure = readDir(dirPath, true);
         prettyBytess(directoryStructure);
-        const allSize = 0;//;
         return {
             path: dirPath,
             type: 'folder',
             size: directoryStructure.size,
             sizeBytes: directoryStructure.sizeBytes,
             contents: directoryStructure.contents,
-            avilable: prettyBytes(allSize.available)
+            avilable: 0,//prettyBytes(allSize)
         };
     } catch (e) {
-
+        console.log(e)
+        return {error: 'error_fetch',type: 'An error occured',message: e.message};
     }
 }
 
