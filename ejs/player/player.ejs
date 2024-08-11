@@ -187,6 +187,7 @@ function formatNumber(number) {
               </div>
             </div>
           </div>
+          <audio class="hidden" id="audioPlayer"></audio>
           <video id="videoPlayer" poster="none" style="background:none" muted playsinline></video>
         </div>
       </div>
@@ -207,6 +208,10 @@ function formatNumber(number) {
             </div>
           </div>
         </div>
+        <div class="player-buttons">
+          <div class="share-button-zobr"><span>Share source link</span>
+      <p>(play on other devices / players)</p></div>
+      </div>
         <div class="buttons-party">
           <div class="button-party translate" onclick="showSubtitles(document.querySelector('.main-party-container').getAttribute('dataid'),document.querySelector('.main-party-container').getAttribute('data-type'),params.get('season'),params.get('episode'))">
             <a></a>
