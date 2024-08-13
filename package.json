@@ -8,6 +8,6 @@
   "scripts": {
     "start": "node main.js"
   },
-  "message": "Testing remote update",
+  "message": "Important update",
   "license": "CC-BY-NC-ND-4.0"
 }
