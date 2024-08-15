@@ -36,34 +36,36 @@ function readDir(currentDir, isRoot = false) {
     const items = fs.readdirSync(currentDir);
 
     items.forEach(item => {
-        const fullPath = path.join(currentDir, item);
-        const stats = fs.statSync(fullPath);
-
-        if (stats.isDirectory()) {
-            const dirStructure = readDir(fullPath, false);
-            structure.contents[item] = dirStructure;
-            structure.size += dirStructure.size; // Add size of subdirectory
-            structure.sizeBytes += dirStructure.sizeBytes; // Add size of subdirectory
-            // Only check for info.json in direct child folders of the root
-            if (isRoot) {
-                const infoFilePath = path.join(fullPath, 'info.json');
-                if (fs.existsSync(infoFilePath)) {
-                    try {
-                        const infoContent = JSON.parse(fs.readFileSync(infoFilePath, 'utf8'));
-                        dirStructure.info = infoContent;
-                    } catch (err) {
-                        console.error(`Error reading/parsing info.json in ${fullPath}:`, err);
+        try {
+            const fullPath = path.join(currentDir, item);
+            const stats = fs.statSync(fullPath);
+            if (stats.isDirectory()) {
+                const dirStructure = readDir(fullPath, false);
+                structure.contents[item] = dirStructure;
+                structure.size += dirStructure.size;
+                structure.sizeBytes += dirStructure.sizeBytes;
+                if (isRoot) {
+                    const infoFilePath = path.join(fullPath, 'info.json');
+                    if (fs.existsSync(infoFilePath)) {
+                        try {
+                            const infoContent = JSON.parse(fs.readFileSync(infoFilePath, 'utf8'));
+                            dirStructure.info = infoContent;
+                        } catch (err) {
+                            console.error(`Error reading/parsing info.json in ${fullPath}:`, err);
+                        }
                     }
                 }
+            } else {
+                structure.contents[item] = {
+                    type: 'file',
+                    size: stats.size, 
+                    path: fullPath
+                };
+                structure.size += stats.size
+                structure.sizeBytes += stats.sizeBytes;
             }
-        } else {
-            structure.contents[item] = {
-                type: 'file',
-                size: stats.size, // Store the raw size
-                path: fullPath
-            };
-            structure.size += stats.size; // Accumulate file size
-            structure.sizeBytes += stats.sizeBytes; // Accumulate file size
+        } catch (e) {
+            console.log(e)
         }
     });
 
@@ -96,8 +98,7 @@ async function getInfo(dirPath) {
             avilable: 0,//prettyBytes(allSize)
         };
     } catch (e) {
-        console.log(e)
-        return {error: 'error_fetch',type: 'An error occured',message: e.message};
+        console.log(e);
     }
 }
 
