@@ -1,10 +1,21 @@
 let fetch;
-
 (async () => {
     fetch = (await import('node-fetch')).default;
 })();
 
+const fs = require('fs')
+const path = require('path')
+
 const cheerio = require('cheerio');
+
+const extractGroupedSubtitles = (input) => {
+    const data = JSON.parse(JSON.parse(`"${(input
+    .trim()
+    .replace(/^\(\[\d+,"[0-9]+:/, '')  
+    .slice(0, -5))}"`));     
+
+    return data[3].children[3]
+};
 
 async function scrap(url) {
     try {
@@ -12,12 +23,15 @@ async function scrap(url) {
         const textData = await response.text();
         const $ = cheerio.load(textData);
         let json = '';
-        $('#__NEXT_DATA__').each((index, element) => {
-            json += $(element).text();
+        $('script').each((index, element) => {
+            text = $(element).text();
+            if (text.includes('groupedSubtitles')) {
+                json += text.replace('self.__next_f.push', '') + '\n'
+            }
         });
-        return JSON.parse(json);
+        return extractGroupedSubtitles(json)
     } catch (e) {
-
+        console.log(e)
     }
 }
 
@@ -107,6 +121,6 @@ module.exports = {
     scrap: scrap,
     decode: decode,
     getZip: fetchAndExtractZip,
-    parse : convertToUTF8
+    parse: convertToUTF8
 
 };
