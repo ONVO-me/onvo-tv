@@ -17,7 +17,7 @@ const extractGroupedSubtitles = (input) => {
     return data[3].children[3]
 };
 
-async function scrap(url) {
+async function scrap2(url) {
     try {
         const response = await fetch(url);
         const textData = await response.text();
@@ -30,6 +30,21 @@ async function scrap(url) {
             }
         });
         return extractGroupedSubtitles(json)
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+async function scrap(url) {
+    try {
+        const response = await fetch(url);
+        const textData = await response.text();
+        const $ = cheerio.load(textData);
+        let json = '';
+        $('#__NEXT_DATA__').each((index, element) => {
+            json += $(element).text();
+        });
+        return JSON.parse(json);
     } catch (e) {
         console.log(e)
     }
@@ -121,6 +136,6 @@ module.exports = {
     scrap: scrap,
     decode: decode,
     getZip: fetchAndExtractZip,
-    parse: convertToUTF8
-
+    parse: convertToUTF8,
+    scrap2
 };
